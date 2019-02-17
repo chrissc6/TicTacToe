@@ -35,7 +35,7 @@ namespace TicTacToe
             turncount++;
 
             Button b = (Button)sender;
-            if(turn)
+            if (turn)
             {
                 b.Text = "X";
             }
@@ -54,7 +54,7 @@ namespace TicTacToe
             bool Winner = false;
 
             //horizontal
-            if((buttonA1.Text == buttonA2.Text) && (buttonA2.Text == buttonA3.Text) && !buttonA1.Enabled)
+            if ((buttonA1.Text == buttonA2.Text) && (buttonA2.Text == buttonA3.Text) && !buttonA1.Enabled)
             {
                 Winner = true;
             }
@@ -67,7 +67,7 @@ namespace TicTacToe
                 Winner = true;
             }
             //vertical
-            else if((buttonA1.Text == buttonB1.Text) && (buttonB1.Text == buttonC1.Text) && !buttonA1.Enabled)
+            else if ((buttonA1.Text == buttonB1.Text) && (buttonB1.Text == buttonC1.Text) && !buttonA1.Enabled)
             {
                 Winner = true;
             }
@@ -89,26 +89,32 @@ namespace TicTacToe
                 Winner = true;
             }
 
-            if(Winner)
+            if (Winner)
             {
                 DisableAll();
 
                 string winc = "";
-                if(turn)
+                if (turn)
                 {
                     winc = "O";
+                    labelOwin.Text = (Int32.Parse(labelOwin.Text) + 1).ToString();
                 }
                 else
                 {
                     winc = "X";
+                    labelXwin.Text = (Int32.Parse(labelXwin.Text) + 1).ToString();
                 }
 
                 MessageBox.Show(winc + " Wins!", "Winner");
             }
             else
             {
-                if(turncount >= 9)
+                if (turncount == 9)
+                {
                     MessageBox.Show(" Tie!", "No winner");
+                    labelTIE.Text = (Int32.Parse(labelTIE.Text) + 1).ToString();
+                }
+                    
             }
         }
 
@@ -122,7 +128,7 @@ namespace TicTacToe
                     b.Enabled = false;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 //do nothing, it thinks the menu strip is a button
             }
@@ -133,19 +139,64 @@ namespace TicTacToe
             turncount = 0;
             turn = true;
 
-            try
+            foreach (Control i in Controls)
             {
-                foreach (Control i in Controls)
+                try
                 {
                     Button b = (Button)i;
                     b.Enabled = true;
                     b.Text = "";
                 }
+                catch (Exception)
+                {
+
+                }
+
             }
-            catch (Exception)
+
+        }
+
+
+
+        private void Benter(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Enabled)
             {
-                //do nothing, it thinks the menu strip is a button
+                if (turn)
+                {
+                    b.Text = "x";
+                }
+                else
+                {
+                    b.Text = "o";
+                }
             }
+            else
+            {
+
+            }
+
+        }
+
+        private void Bleave(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Enabled)
+            {
+                b.Text = "";
+            }
+
+        }
+
+        private void resetWinCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labelXwin.Text = "0";
+            labelOwin.Text = "0";
+            labelTIE.Text = "0";
+            newGameToolStripMenuItem_Click(sender, e);
+
+
         }
     }
 }

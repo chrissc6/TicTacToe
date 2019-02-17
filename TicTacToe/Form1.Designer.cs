@@ -30,9 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonA1 = new System.Windows.Forms.Button();
             this.buttonA2 = new System.Windows.Forms.Button();
@@ -43,6 +43,13 @@
             this.buttonC1 = new System.Windows.Forms.Button();
             this.buttonC2 = new System.Windows.Forms.Button();
             this.buttonC3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelXwin = new System.Windows.Forms.Label();
+            this.labelTIE = new System.Windows.Forms.Label();
+            this.labelOwin = new System.Windows.Forms.Label();
+            this.resetWinCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,10 +68,25 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameToolStripMenuItem,
+            this.resetWinCountToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newGameToolStripMenuItem
+            // 
+            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.newGameToolStripMenuItem.Text = "New Game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -74,24 +96,10 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // newGameToolStripMenuItem
-            // 
-            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newGameToolStripMenuItem.Text = "New Game";
-            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -104,6 +112,8 @@
             this.buttonA1.TabIndex = 1;
             this.buttonA1.UseVisualStyleBackColor = true;
             this.buttonA1.Click += new System.EventHandler(this.buttonClick);
+            this.buttonA1.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonA1.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonA2
             // 
@@ -114,6 +124,8 @@
             this.buttonA2.TabIndex = 2;
             this.buttonA2.UseVisualStyleBackColor = true;
             this.buttonA2.Click += new System.EventHandler(this.buttonClick);
+            this.buttonA2.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonA2.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonA3
             // 
@@ -124,6 +136,8 @@
             this.buttonA3.TabIndex = 3;
             this.buttonA3.UseVisualStyleBackColor = true;
             this.buttonA3.Click += new System.EventHandler(this.buttonClick);
+            this.buttonA3.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonA3.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonB1
             // 
@@ -134,6 +148,8 @@
             this.buttonB1.TabIndex = 4;
             this.buttonB1.UseVisualStyleBackColor = true;
             this.buttonB1.Click += new System.EventHandler(this.buttonClick);
+            this.buttonB1.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonB1.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonB2
             // 
@@ -144,6 +160,8 @@
             this.buttonB2.TabIndex = 5;
             this.buttonB2.UseVisualStyleBackColor = true;
             this.buttonB2.Click += new System.EventHandler(this.buttonClick);
+            this.buttonB2.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonB2.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonB3
             // 
@@ -154,6 +172,8 @@
             this.buttonB3.TabIndex = 6;
             this.buttonB3.UseVisualStyleBackColor = true;
             this.buttonB3.Click += new System.EventHandler(this.buttonClick);
+            this.buttonB3.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonB3.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonC1
             // 
@@ -164,6 +184,8 @@
             this.buttonC1.TabIndex = 7;
             this.buttonC1.UseVisualStyleBackColor = true;
             this.buttonC1.Click += new System.EventHandler(this.buttonClick);
+            this.buttonC1.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonC1.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonC2
             // 
@@ -174,6 +196,8 @@
             this.buttonC2.TabIndex = 8;
             this.buttonC2.UseVisualStyleBackColor = true;
             this.buttonC2.Click += new System.EventHandler(this.buttonClick);
+            this.buttonC2.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonC2.MouseLeave += new System.EventHandler(this.Bleave);
             // 
             // buttonC3
             // 
@@ -184,12 +208,84 @@
             this.buttonC3.TabIndex = 9;
             this.buttonC3.UseVisualStyleBackColor = true;
             this.buttonC3.Click += new System.EventHandler(this.buttonClick);
+            this.buttonC3.MouseEnter += new System.EventHandler(this.Benter);
+            this.buttonC3.MouseLeave += new System.EventHandler(this.Bleave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 271);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "X Win Count";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(102, 271);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Tie Count";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(175, 271);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "O Win Count";
+            // 
+            // labelXwin
+            // 
+            this.labelXwin.AutoSize = true;
+            this.labelXwin.Location = new System.Drawing.Point(43, 287);
+            this.labelXwin.Name = "labelXwin";
+            this.labelXwin.Size = new System.Drawing.Size(13, 13);
+            this.labelXwin.TabIndex = 13;
+            this.labelXwin.Text = "0";
+            // 
+            // labelTIE
+            // 
+            this.labelTIE.AutoSize = true;
+            this.labelTIE.Location = new System.Drawing.Point(125, 287);
+            this.labelTIE.Name = "labelTIE";
+            this.labelTIE.Size = new System.Drawing.Size(13, 13);
+            this.labelTIE.TabIndex = 14;
+            this.labelTIE.Text = "0";
+            // 
+            // labelOwin
+            // 
+            this.labelOwin.AutoSize = true;
+            this.labelOwin.Location = new System.Drawing.Point(207, 287);
+            this.labelOwin.Name = "labelOwin";
+            this.labelOwin.Size = new System.Drawing.Size(13, 13);
+            this.labelOwin.TabIndex = 15;
+            this.labelOwin.Text = "0";
+            // 
+            // resetWinCountToolStripMenuItem
+            // 
+            this.resetWinCountToolStripMenuItem.Name = "resetWinCountToolStripMenuItem";
+            this.resetWinCountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resetWinCountToolStripMenuItem.Text = "Reset Win Count";
+            this.resetWinCountToolStripMenuItem.Click += new System.EventHandler(this.resetWinCountToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 280);
+            this.ClientSize = new System.Drawing.Size(265, 313);
+            this.Controls.Add(this.labelOwin);
+            this.Controls.Add(this.labelTIE);
+            this.Controls.Add(this.labelXwin);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonC3);
             this.Controls.Add(this.buttonC2);
             this.Controls.Add(this.buttonC1);
@@ -230,6 +326,13 @@
         private System.Windows.Forms.Button buttonC1;
         private System.Windows.Forms.Button buttonC2;
         private System.Windows.Forms.Button buttonC3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelXwin;
+        private System.Windows.Forms.Label labelTIE;
+        private System.Windows.Forms.Label labelOwin;
+        private System.Windows.Forms.ToolStripMenuItem resetWinCountToolStripMenuItem;
     }
 }
 
