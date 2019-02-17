@@ -21,6 +21,7 @@ namespace TicTacToe
         int turncount = 0;
         string Player1 = "Player 1";
         string Player2 = "Player 2";
+        bool ComputerActive = false; // computer ai
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -49,6 +50,152 @@ namespace TicTacToe
             turn = !turn; //switch turn
             b.Enabled = false; //turning button off after click
             WinCheck();
+
+            if ((!turn) && (ComputerActive))
+            {
+                ComputerAiMove();
+            }
+        }
+
+        private void ComputerAiMove()
+        {
+            //win - get tic tac toe
+            //save - block x win
+            //strat - go for corner
+            //start - go for center
+            //else - go for open space
+
+            Button move = null;
+
+            move = LookWin("O");
+            if (move == null)
+            {
+                move = LookBlock("X");
+                if (move == null)
+                {
+                    move = LookCorner();
+                    if (move == null)
+                    {
+                        move = LookAnySpace();
+                    }
+                }
+            }
+
+            move.PerformClick();
+        }
+
+        private Button LookAnySpace()
+        {
+            Button[] buttonS = new Button[] { buttonA1, buttonA2, buttonA3, buttonB1, buttonB2, buttonB3, buttonC1, buttonC2, buttonC3 };
+
+            foreach (Button i in buttonS)
+            {
+                if(i != null)
+                {
+                    return i;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            return null;
+        }
+
+        private Button LookCorner()
+        {
+            if (buttonA1.Text == "")
+                return buttonA1;
+            if (buttonA3.Text == "")
+                return buttonA3;
+            if (buttonC1.Text == "")
+                return buttonC1;
+            if (buttonC3.Text == "")
+                return buttonC3;
+
+            else
+            {
+                return null;
+            }
+        }
+
+        private Button LookBlock(string v)
+        {
+            Button test;
+
+            test = LookWin(v);
+
+            if (test == null)
+            {
+                return null;
+            }
+            else
+            {
+                return test;
+            }
+        }
+
+        private Button LookWin(string v)
+        {
+            //horizontal
+            if ((buttonA1.Text == v) && (buttonA2.Text == v) && (buttonA3.Text == ""))
+                return buttonA3;
+            if ((buttonA1.Text == v) && (buttonA2.Text == "") && (buttonA3.Text == v))
+                return buttonA2;
+            if ((buttonA1.Text == "") && (buttonA2.Text == v) && (buttonA3.Text == v))
+                return buttonA1;
+            if ((buttonB1.Text == v) && (buttonB2.Text == v) && (buttonB3.Text == ""))
+                return buttonB3;
+            if ((buttonB1.Text == v) && (buttonB2.Text == "") && (buttonB3.Text == v))
+                return buttonB2;
+            if ((buttonB1.Text == "") && (buttonB2.Text == v) && (buttonB3.Text == v))
+                return buttonB1;
+            if ((buttonC1.Text == v) && (buttonC2.Text == v) && (buttonC3.Text == ""))
+                return buttonC3;
+            if ((buttonC1.Text == v) && (buttonC2.Text == "") && (buttonC3.Text == v))
+                return buttonC2;
+            if ((buttonC1.Text == "") && (buttonC2.Text == v) && (buttonC3.Text == v))
+                return buttonC1;
+
+            //vertical
+            if ((buttonA1.Text == v) && (buttonB1.Text == v) && (buttonC1.Text == ""))
+                return buttonC1;
+            if ((buttonA1.Text == v) && (buttonB1.Text == "") && (buttonC1.Text == v))
+                return buttonB1;
+            if ((buttonA1.Text == "") && (buttonB1.Text == v) && (buttonC1.Text == v))
+                return buttonA1;
+            if ((buttonA2.Text == v) && (buttonB2.Text == v) && (buttonC2.Text == ""))
+                return buttonC2;
+            if ((buttonA2.Text == v) && (buttonB2.Text == "") && (buttonC2.Text == v))
+                return buttonB2;
+            if ((buttonA2.Text == "") && (buttonB2.Text == v) && (buttonC2.Text == v))
+                return buttonA2;
+            if ((buttonA3.Text == v) && (buttonB3.Text == v) && (buttonC3.Text == ""))
+                return buttonC3;
+            if ((buttonA3.Text == v) && (buttonB3.Text == "") && (buttonC3.Text == v))
+                return buttonB3;
+            if ((buttonA3.Text == "") && (buttonB3.Text == v) && (buttonC3.Text == v))
+                return buttonA3;
+
+            //diagonal
+            if ((buttonA1.Text == v) && (buttonB2.Text == v) && (buttonC3.Text == ""))
+                return buttonC3;
+            if ((buttonA1.Text == v) && (buttonB2.Text == "") && (buttonC3.Text == v))
+                return buttonB2;
+            if ((buttonA1.Text == "") && (buttonB2.Text == v) && (buttonC3.Text == v))
+                return buttonA1;
+            if ((buttonA3.Text == v) && (buttonB2.Text == v) && (buttonC1.Text == ""))
+                return buttonC1;
+            if ((buttonA3.Text == v) && (buttonB2.Text == "") && (buttonC1.Text == v))
+                return buttonB2;
+            if ((buttonA3.Text == "") && (buttonB2.Text == v) && (buttonC1.Text == v))
+                return buttonA3;
+
+            else
+            {
+                return null;
+            }
         }
 
         private void WinCheck()
@@ -116,7 +263,7 @@ namespace TicTacToe
                     MessageBox.Show(" Tie!", "No winner");
                     labelTIE.Text = (Int32.Parse(labelTIE.Text) + 1).ToString();
                 }
-                    
+
             }
         }
 
@@ -141,16 +288,16 @@ namespace TicTacToe
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Button[] buttonS = new Button[] { buttonA1, buttonA2, buttonA3, buttonB1, buttonB2, buttonB3, buttonC1, buttonC2, buttonC3 };
             turncount = 0;
             turn = true;
 
-            foreach (Control i in Controls)
+            foreach (Button i in buttonS)
             {
                 try
                 {
-                    Button b = (Button)i;
-                    b.Enabled = true;
-                    b.Text = "";
+                    i.Enabled = true;
+                    i.Text = "";
                 }
                 catch (Exception)
                 {
@@ -211,12 +358,50 @@ namespace TicTacToe
 
         private void textBox2P2_TextChanged(object sender, EventArgs e)
         {
-            Player2 = textBox2P2.Text;
+            if (textBox2P2.Text.ToUpper() == "COMPUTER")
+            {
+                ComputerActive = true;
+                Player2 = textBox2P2.Text;
+            }
+            else
+            {
+                Player2 = textBox2P2.Text;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             newGameToolStripMenuItem_Click(sender, e);
+        }
+
+        private void setDefaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Player1 = "Player 1";
+            textBox1P1.Text = Player1;
+            Player2 = "Player 2";
+            textBox2P2.Text = Player2;
+            ComputerActive = false;
+        }
+
+        private void playerModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Player2 = "Computer";
+            textBox2P2.Text = Player2;
+            ComputerActive = true;
+        }
+
+        private void playerModeDefaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setDefaultToolStripMenuItem_Click(sender, e);
+        }
+
+        private void easterEggToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Player2 = "Computer";
+            textBox2P2.Text = Player2;
+            ComputerActive = true;
+            MessageBox.Show(" My 1st AI go easy on em", "Easter Egg");
         }
     }
 }
