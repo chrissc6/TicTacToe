@@ -43,13 +43,14 @@
             this.buttonC1 = new System.Windows.Forms.Button();
             this.buttonC2 = new System.Windows.Forms.Button();
             this.buttonC3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.labelXwin = new System.Windows.Forms.Label();
             this.labelTIE = new System.Windows.Forms.Label();
             this.labelOwin = new System.Windows.Forms.Label();
             this.resetWinCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1P1 = new System.Windows.Forms.TextBox();
+            this.textBox2P2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,14 +78,14 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -211,40 +212,20 @@
             this.buttonC3.MouseEnter += new System.EventHandler(this.Benter);
             this.buttonC3.MouseLeave += new System.EventHandler(this.Bleave);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 271);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "X Win Count";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(102, 271);
+            this.label2.Location = new System.Drawing.Point(102, 270);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Tie Count";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(175, 271);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "O Win Count";
-            // 
             // labelXwin
             // 
             this.labelXwin.AutoSize = true;
-            this.labelXwin.Location = new System.Drawing.Point(43, 287);
+            this.labelXwin.Location = new System.Drawing.Point(43, 296);
             this.labelXwin.Name = "labelXwin";
             this.labelXwin.Size = new System.Drawing.Size(13, 13);
             this.labelXwin.TabIndex = 13;
@@ -253,7 +234,7 @@
             // labelTIE
             // 
             this.labelTIE.AutoSize = true;
-            this.labelTIE.Location = new System.Drawing.Point(125, 287);
+            this.labelTIE.Location = new System.Drawing.Point(125, 296);
             this.labelTIE.Name = "labelTIE";
             this.labelTIE.Size = new System.Drawing.Size(13, 13);
             this.labelTIE.TabIndex = 14;
@@ -262,7 +243,7 @@
             // labelOwin
             // 
             this.labelOwin.AutoSize = true;
-            this.labelOwin.Location = new System.Drawing.Point(207, 287);
+            this.labelOwin.Location = new System.Drawing.Point(207, 296);
             this.labelOwin.Name = "labelOwin";
             this.labelOwin.Size = new System.Drawing.Size(13, 13);
             this.labelOwin.TabIndex = 15;
@@ -275,17 +256,46 @@
             this.resetWinCountToolStripMenuItem.Text = "Reset Win Count";
             this.resetWinCountToolStripMenuItem.Click += new System.EventHandler(this.resetWinCountToolStripMenuItem_Click);
             // 
+            // textBox1P1
+            // 
+            this.textBox1P1.Location = new System.Drawing.Point(13, 270);
+            this.textBox1P1.Name = "textBox1P1";
+            this.textBox1P1.Size = new System.Drawing.Size(74, 20);
+            this.textBox1P1.TabIndex = 16;
+            this.textBox1P1.Text = "Player 1";
+            this.textBox1P1.TextChanged += new System.EventHandler(this.textBox1P1_TextChanged);
+            // 
+            // textBox2P2
+            // 
+            this.textBox2P2.Location = new System.Drawing.Point(175, 270);
+            this.textBox2P2.Name = "textBox2P2";
+            this.textBox2P2.Size = new System.Drawing.Size(74, 20);
+            this.textBox2P2.TabIndex = 17;
+            this.textBox2P2.Text = "Player 2";
+            this.textBox2P2.TextChanged += new System.EventHandler(this.textBox2P2_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(93, 313);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "New Game";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 313);
+            this.ClientSize = new System.Drawing.Size(265, 340);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox2P2);
+            this.Controls.Add(this.textBox1P1);
             this.Controls.Add(this.labelOwin);
             this.Controls.Add(this.labelTIE);
             this.Controls.Add(this.labelXwin);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonC3);
             this.Controls.Add(this.buttonC2);
             this.Controls.Add(this.buttonC1);
@@ -326,13 +336,14 @@
         private System.Windows.Forms.Button buttonC1;
         private System.Windows.Forms.Button buttonC2;
         private System.Windows.Forms.Button buttonC3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelXwin;
         private System.Windows.Forms.Label labelTIE;
         private System.Windows.Forms.Label labelOwin;
         private System.Windows.Forms.ToolStripMenuItem resetWinCountToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1P1;
+        private System.Windows.Forms.TextBox textBox2P2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

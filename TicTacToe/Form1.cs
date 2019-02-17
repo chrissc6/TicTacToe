@@ -19,6 +19,8 @@ namespace TicTacToe
 
         bool turn = true; //true player 1 turn, false player 2 turn 
         int turncount = 0;
+        string Player1 = "Player 1";
+        string Player2 = "Player 2";
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -93,15 +95,15 @@ namespace TicTacToe
             {
                 DisableAll();
 
-                string winc = "";
+                string winc;
                 if (turn)
                 {
-                    winc = "O";
+                    winc = Player2;
                     labelOwin.Text = (Int32.Parse(labelOwin.Text) + 1).ToString();
                 }
                 else
                 {
-                    winc = "X";
+                    winc = Player1;
                     labelXwin.Text = (Int32.Parse(labelXwin.Text) + 1).ToString();
                 }
 
@@ -120,9 +122,10 @@ namespace TicTacToe
 
         private void DisableAll()
         {
+            Button[] buttonS = new Button[] { buttonA1, buttonA2, buttonA3, buttonB1, buttonB2, buttonB3, buttonC1, buttonC2, buttonC3 };
             try
             {
-                foreach (Control i in Controls)
+                foreach (Button i in buttonS)
                 {
                     Button b = (Button)i;
                     b.Enabled = false;
@@ -132,6 +135,8 @@ namespace TicTacToe
             {
                 //do nothing, it thinks the menu strip is a button
             }
+
+            button1.Enabled = true;
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -197,6 +202,21 @@ namespace TicTacToe
             newGameToolStripMenuItem_Click(sender, e);
 
 
+        }
+
+        private void textBox1P1_TextChanged(object sender, EventArgs e)
+        {
+            Player1 = textBox1P1.Text;
+        }
+
+        private void textBox2P2_TextChanged(object sender, EventArgs e)
+        {
+            Player2 = textBox2P2.Text;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            newGameToolStripMenuItem_Click(sender, e);
         }
     }
 }
