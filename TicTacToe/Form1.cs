@@ -66,6 +66,7 @@ namespace TicTacToe
             //else - go for open space
 
             Button move = null;
+            //move = LookAnySpace();
 
             move = LookWin("O");
             if (move == null)
@@ -90,13 +91,9 @@ namespace TicTacToe
 
             foreach (Button i in buttonS)
             {
-                if(i != null)
+                if(i.Enabled == true)
                 {
                     return i;
-                }
-                else
-                {
-                    return null;
                 }
             }
 
